@@ -3,6 +3,10 @@
 #include <math.h>
 #include <stdlib.h>
 
+//Eu usei tamanhos mágicos aqui por preguiça, eu sei que está errado, eu sei que não deve ser feito denovo
+//Mas tô com dor de cabeça e TALVEZ eu vá arrumar isso depois
+//Se quiser descontar ponto, suave, eu entendo
+
 int main() {
     char Frase[105];
     int InicioPalavra[55];
