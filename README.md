@@ -13,4 +13,6 @@ Questão 1 - LLMs ajudaram a organizar a matemática requisitada e erros de segu
 
 Questão 2 - A IA deu a idéia de colocar um número grande constante 'MAX_CLIENTES' para ter um tamanho dinâmico do array de clientes. Uma sacada genial.
 
-Questão 3 - LLM foi usada apenas para ajudar a entender como construir o fim do loop Frase[i] != '\0'. Acabei usando tamanhos mágicos nela por distração
+Questão 3 - LLM foi usada apenas para ajudar a entender como construir o fim do loop Frase[i] != '\0'. Acabei usando números mágicos nela por distração
+
+Questão 4 - LLM ajudou bastante a entender a sacada de tratar o problema como uma soma binária, além da sugestão de uso de certas utilidades de string.h e stdio.h que ainda não havia visto.
