@@ -4,7 +4,6 @@
 #include <stdlib.h>
 
 #define MAX_CLIENTES 400 //Não devem ter cases que peçam mais do que isso, né?
-//Já que não deixam usar Matriz, eu boto aqui uma constante longa
 
 int main() {
     int N, X, Y;
