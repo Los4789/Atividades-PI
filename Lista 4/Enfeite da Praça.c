@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
 
 #define MAX_ALTURA 200
 #define MAX_LARGURA 200
