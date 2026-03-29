@@ -19,9 +19,9 @@ Questão 4 - Depois que a LLM ajudou a entender a sacada de tratar o problema co
 
 **Progresso Semana 4:**
 
-Questão 1 - Eu fiz essa por último, e depois de fazer a questão 2, essa foi uma briza. Eu sei que as partes //Cima, //Baixo, //Esquerda e //Direita ficaram um pouco repetitivas e colocar dentro de uma função ou criar um outro laço de vetores seria uma boa, mas na real, não tô com saco não. Tá bom assim! Tô feliz em conseguir fazer isso sem recurssão!
+Questão 1 - Eu fiz essa por último, e depois de fazer a questão 2, digo que foi suave. Eu sei que as partes //Cima, //Baixo, //Esquerda e //Direita ficaram repetitivas e colocar dentro de uma função ou criar um outro laço de vetores seria uma boa, mas na real, não tô com saco não. Tá bom assim! Tô feliz em conseguir fazer isso sem recurssão!
 
-Questão 2 - Foi um saco pra fazer mesmo sendo uma questão de nível 'fácil', mas acredito que o limite auto-imposto de não usar recurssão foi a causa. A IA avaliou vários erros nas versões iniciais do código e confirmou testes na ausência do thehuxley.
+Questão 2 - Foi horrível pra fazer mesmo sendo uma questão de nível 'fácil', mas acredito que o limite auto-imposto de não usar recurssão foi a causa. A IA avaliou vários erros nas versões iniciais do código e confirmou testes na ausência do thehuxley.
 
 Questão 3 - Apesar de ser 'Nível 2', infinitamente mais fácil que a segunda 'Nível 1'. Não precisou de absolutamente nenhum prompt pra IA, nem mesmo para verificar erros de sintaxe (que é uma coisa comum que verifico em quase todos os códigos). Pelo menos no compilador, o debug deu a resposta esperada.
 
