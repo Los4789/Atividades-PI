@@ -17,7 +17,7 @@ Questão 3 - Muito fácil. IA foi usada apenas para ajudar a entender como const
 
 Questão 4 - Depois que a LLM ajudou a entender a sacada de tratar o problema como uma soma binária, além da sugestão de uso de certas utilidades de string.h e stdio.h que ainda não havia visto, o problema ficou bem fácil.
 
-**Comentário sobre o Teste 3**
+**Comentário sobre o Teste 3:**
 Esse foi o primeiro teste que me lasquei, perdi muito tempo quebrando a cabeça em um erro básico que precisei de ajuda dos professores e de 2 monitores diferentes pra ver. Foi uma vergonha. O erro era que ao invés de usar a variável w, usei frase[w]. Ainda não havia me acostumado completamente a usar strings aqui. Em Python esse seria um teste muito fácil. Em C, isso foi uma desgraça.
 
 **Progresso Semana 4:**
