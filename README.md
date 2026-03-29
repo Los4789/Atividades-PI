@@ -25,5 +25,5 @@ Questão 2 - Foi um saco pra fazer mesmo sendo uma questão de nível 'fácil', 
 
 Questão 3 - Apesar de ser 'Nível 2', infinitamente mais fácil que a segunda 'Nível 1'. Não precisou de absolutamente nenhum prompt pra IA, nem mesmo para verificar erros de sintaxe (que é uma coisa comum que verifico em quase todos os códigos). Pelo menos no compilador, o debug deu a resposta esperada.
 
-Questão 4 - 
+Questão 4 - Idem, infinitamente mais fácil que a segunda, não precisei perguntar nada de lógica. Como de costume, usei IA pra arrumar erros de ponto e vírgula e sintaxe, pois eu valorizo muito a minha sanidade.
 
