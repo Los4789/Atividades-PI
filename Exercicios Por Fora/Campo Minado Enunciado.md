@@ -21,13 +21,20 @@ Imprima a matriz resultante. As bombas (*) devem continuar no mesmo lugar. Os es
 Entrada:
 
 3 4
+
 *---
+
 --*-
+
 *---
 
 Saída:
 
 *211
+
 23*1
+
 *211
+
+
 (Dica visual do exemplo: O espaço na Linha 1, Coluna 1 resultou em 3 porque ele tem a bomba de cima-esquerda, a bomba de baixo-esquerda, e a bomba encostada na direita dele).
