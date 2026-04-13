@@ -30,3 +30,11 @@ Questão 3 - Apesar de ser 'Nível 2', infinitamente mais fácil que a segunda '
 
 Questão 4 - Idem, infinitamente mais fácil que a segunda, não precisei perguntar nada de lógica. Como de costume, usei IA pra arrumar erros de ponto e vírgula e sintaxe, pois eu valorizo muito a minha sanidade.
 
+**Progresso Semana 5:**
+Semana muito procrastinada, estava cheio de provas e atividades de Lab, estudei muito pouco, esse teste vai me lascar, vida que segue
+
+O Vício de Krebz - Essa parte da fusão foi muito complicado, a IA me ensinou a fazer o algorítmo para a união dos caracteres
+
+Sistema de Notas da Escola CInal do Saber - A saída tinha vários erros enquanto eu debugava, então pedi pra IA apurar o código e ela achou falhas na alocação
+
+Mapa vazio - A única que fiz sem perguntar nada pra IA, foi uma maravilha
