@@ -31,7 +31,8 @@ Questão 3 - Apesar de ser 'Nível 2', infinitamente mais fácil que a segunda '
 Questão 4 - Idem, infinitamente mais fácil que a segunda, não precisei perguntar nada de lógica. Como de costume, usei IA pra arrumar erros de ponto e vírgula e sintaxe, pois eu valorizo muito a minha sanidade.
 
 **Progresso Semana 5:**
-Semana muito procrastinada, estava cheio de provas e atividades de Lab, estudei muito pouco, esse teste vai me lascar, vida que segue
+Semana muito procrastinada, estava cheio de provas e atividades de Lab, estudei muito pouco, fiz a lista inteira no domingo
+Esse teste vai me lascar...
 
 O Vício de Krebz - Essa parte da fusão foi muito complicado, a IA me ensinou a fazer o algorítmo para a união dos caracteres
 
