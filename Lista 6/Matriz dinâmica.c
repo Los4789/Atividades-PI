@@ -1,34 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Dobro(int **Matriz, int Linhas, int Colunas) {
+int Dobro(int Valor) {
+    return Valor * 2;
+}
+
+int Quadrado(int Valor) {
+    return Valor * Valor;
+}
+
+int Absoluto(int Valor) {
+    return abs(Valor);
+}
+
+
+void FuncOp(int **Matriz, int Linhas, int Colunas, int (*Funcao)(int)) {
     for (int i = 0; i < Linhas; i++) {
         for (int j = 0; j < Colunas; j++) {
-            Matriz[i][j] *= 2;
+            Matriz[i][j] = Funcao(Matriz[i][j]);
         }
     }
 }
 
-void Quadrado(int **Matriz, int Linhas, int Colunas) {
-    for (int i = 0; i < Linhas; i++) {
-        for (int j = 0; j < Colunas; j++) {
-            Matriz[i][j] *= Matriz[i][j];
-        }
-    }
-}
-
-void Absoluto(int **Matriz, int Linhas, int Colunas) {
-    for (int i = 0; i < Linhas; i++) {
-        for (int j = 0; j < Colunas; j++) {
-            Matriz[i][j] = abs(Matriz[i][j]);
-        }
-    }
-}
-
-int main()
-{
+int main() {
     int Linhas, Colunas, Op;
     int i, j;
+    
     scanf("%d %d", &Linhas, &Colunas);
     int **Matriz = (int**) malloc(Linhas * sizeof(int*));
     
@@ -47,25 +44,25 @@ int main()
         }
     }
     
-    //Input Matriz
+    // Input Matriz
     for (i = 0; i < Linhas; i++) {
         for (j = 0; j < Colunas; j++) {
             scanf("%d", &Matriz[i][j]);
         }
     }
-    //Input operação
+
     scanf("%d", &Op);
     
     switch (Op) {
         case 1:
-        Dobro(Matriz, Linhas, Colunas);
-        break;
+            FuncOp(Matriz, Linhas, Colunas, &Dobro);
+            break;
         case 2:
-        Quadrado(Matriz, Linhas, Colunas);
-        break;
+            FuncOp(Matriz, Linhas, Colunas, &Quadrado);
+            break;
         case 3:
-        Absoluto(Matriz, Linhas, Colunas);
-        break;
+            FuncOp(Matriz, Linhas, Colunas, &Absoluto);
+            break;
     }
     
     for (i = 0; i < Linhas; i++) {
