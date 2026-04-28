@@ -1,0 +1,228 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef enum {
+    FOGO,
+    AGUA,
+    ELETRICIDADE,
+    PLANTA
+} TipoElemental;
+
+const char *TipoNome[] = {"Fogo", "Agua", "Eletricidade", "Planta"};
+
+typedef struct {
+    int Id;
+    char Nome[40];
+    TipoElemental Tipo;
+    int Xp;
+    int Ataque;
+    int OrdemRegistro;
+} Pokemon;
+
+typedef struct {
+    char Nome[40];
+    char Cpf[15];
+    int Idade;
+    Pokemon *Pokemons;
+    int QtdPokemons;
+    int Nivel;
+    int OrdemCadastro;
+} Treinador;
+
+int SepararCpf(Treinador *Lista, int n, char *Cpf) {
+    for (int i = 0; i < n; i++) {
+        if (strcmp(Lista[i].Cpf, Cpf) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int SepararId(Treinador *t, int Id) {
+    for (int i = 0; i < t->QtdPokemons; i++) {
+        if (t->Pokemons[i].Id == Id) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int ForcPokemon(Pokemon t) {
+    return (2 * t.Xp) + t.Ataque;
+}
+
+void AtualizarNivel(Treinador *t) {
+    t->Nivel = 0;
+    for (int i = 0; i < t->QtdPokemons; i++) {
+        t->Nivel += ForcPokemon(t->Pokemons[i]);
+    }
+}
+
+int CompararPokemons(const void *a, const void *b) {
+    Pokemon *p1 = (Pokemon *)a;
+    Pokemon *p2 = (Pokemon *)b;
+    
+    int Forca1 = ForcPokemon(*p1);
+    int Forca2 = ForcPokemon(*p2);
+
+    if (Forca1 != Forca2) {
+        return Forca2 - Forca1;
+    }
+    return p1->OrdemRegistro - p2->OrdemRegistro;
+}
+
+int CompararTreinadores(const void *a, const void *b) {
+    Treinador *t1 = (Treinador *)a;
+    Treinador *t2 = (Treinador *)b;
+
+    if (t1->Nivel != t2->Nivel) {
+        return t2->Nivel - t1->Nivel;
+    }
+    return t1->OrdemCadastro - t2->OrdemCadastro;
+}
+
+
+int main()
+{
+    Treinador *Treinadores = NULL;
+    int Comando = -1;
+    int NumTreinadores = 0;
+    int ContTreinadores = 0;
+    
+    while (Comando != 0) {
+        scanf("%d", &Comando);
+        switch (Comando) {
+            //Timbora
+            case 0: {
+                for (int i = 0; i < NumTreinadores; i++) {
+                        free(Treinadores[i].Pokemons);
+                }
+                free(Treinadores);
+            }
+                return 0;
+            //Cadastro Treinador
+            case 1: {
+                char Nome[40];
+                char Cpf[15];
+                int Idade;
+                scanf("%s %s %d", Nome, Cpf, &Idade);
+            
+                if (SepararCpf(Treinadores, NumTreinadores, Cpf) == -1) {
+                    NumTreinadores++;
+                    Treinadores = realloc(Treinadores, NumTreinadores * sizeof(Treinador));
+                    Treinador *Novo = &Treinadores[NumTreinadores-1];
+                    
+                    strcpy(Novo->Nome, Nome);
+                    strcpy(Novo->Cpf, Cpf);
+                    Novo->Idade = Idade;
+                    Novo->QtdPokemons = 0;
+                    Novo->Pokemons = NULL;
+                    Novo->Nivel = 0;
+                    Novo->OrdemCadastro = ContTreinadores++;
+                    
+                    
+                }
+            }
+                break;
+            //Cadastro Pokemon
+            case 2: {
+                char Cpf[15];
+                int Id;
+                char NomeP[40];
+                int Xp;
+                int Ataque;
+                int TipoInt;
+                
+                scanf("%s %d %s %d %d %d", Cpf, &Id, NomeP, &Xp, &Ataque, &TipoInt);
+                
+                int Idx = SepararCpf(Treinadores, NumTreinadores, Cpf);
+                
+                if (Idx != -1) {
+                    Treinador *t = &Treinadores[Idx];
+                    if (SepararId(t, Id) == -1) {
+                        t->QtdPokemons++;
+                        t->Pokemons = realloc(t->Pokemons, t->QtdPokemons * sizeof(Pokemon));
+                        Pokemon *p = &t->Pokemons[t->QtdPokemons - 1];
+                        
+                        p->Id = Id;
+                        strcpy(p->Nome, NomeP);
+                        p->Xp = Xp;
+                        p->Ataque = Ataque;
+                        p->Tipo = (TipoElemental)TipoInt;
+                        p->OrdemRegistro = t->QtdPokemons;
+                        
+                        AtualizarNivel(t);
+                    }
+                }
+                
+            }
+                break;
+            //Listar Classificação
+            case 3: {
+                printf("Classificação atual\n");
+                qsort(Treinadores, NumTreinadores, sizeof(Treinador), CompararTreinadores);
+                
+                for (int i = 0; i < NumTreinadores; i++) {
+                    printf("T: %s, CPF: %s, Nivel: %d\n", Treinadores[i].Nome, Treinadores[i].Cpf, Treinadores[i].Nivel);
+                    qsort(Treinadores[i].Pokemons, Treinadores[i].QtdPokemons, sizeof(Pokemon), CompararPokemons);
+
+                    for (int j = 0; j < Treinadores[i].QtdPokemons; j++) {
+                        Pokemon p = Treinadores[i].Pokemons[j];
+                        printf("  P: %d, %s, %d, %d, %s\n", p.Id, p.Nome, p.Xp, p.Ataque, TipoNome[p.Tipo]);
+                    }
+                }
+            }
+                break;
+            case 4: {
+                char Cpf[15];
+                scanf("%s", Cpf);
+                
+                int Idx = SepararCpf(Treinadores, NumTreinadores, Cpf);
+                if (Idx != -1) {
+                    free(Treinadores[Idx].Pokemons);
+                    for (int i = Idx; i < NumTreinadores - 1; i++) {
+                        Treinadores[i] = Treinadores[i + 1];
+                    }
+                    NumTreinadores--;
+                    
+                    if (NumTreinadores > 0) {
+                        Treinadores = realloc(Treinadores, NumTreinadores * sizeof(Treinador));
+                    } else {
+                        free(Treinadores);
+                        Treinadores = NULL;
+                    }
+                }
+                break;
+            }
+            case 5: {
+                char Cpf[15];
+                int Id;
+                char NomeP[40];
+                int Xp;
+                int Ataque;
+                int TipoInt;
+                
+                scanf("%s %d %s %d %d %d", Cpf, &Id, NomeP, &Xp, &Ataque, &TipoInt);
+                
+                int Idx = SepararCpf(Treinadores, NumTreinadores, Cpf);
+                
+                if (Idx != -1) {
+                    Treinador *t = &Treinadores[Idx];
+                    int pIdx = SepararId(t, Id);
+                    
+                    if (pIdx != -1) {
+                        Pokemon *p = &t->Pokemons[pIdx];
+
+                        strcpy(p->Nome, NomeP);
+                        p->Xp = Xp;
+                        p->Ataque = Ataque;
+                        p->Tipo = (TipoElemental)TipoInt;
+                        AtualizarNivel(t);
+                    }
+                }
+            }
+                break;
+        }
+    }
+}
