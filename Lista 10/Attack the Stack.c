@@ -48,6 +48,12 @@ void ResolverPilha(No **Topo) {
                 
                 if (NovoNo == NULL) {
                     printf("Erro de Alocacao na combinacao!\n");
+                    No *Atual = *Topo;
+                    while (Atual != NULL) {
+                        No *Deletar = Atual;
+                        Atual = Atual->Proximo;
+                        free(Deletar);
+                    }
                     exit(1);
                 }
                 
