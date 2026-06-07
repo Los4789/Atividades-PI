@@ -9,6 +9,10 @@ typedef struct No {
 
 No *CriarNo(int Valor) {
     No *Novo = (No*) malloc (sizeof(No));
+    if (Novo == NULL) {
+        return NULL;
+    }
+    
     Novo->Valor = Valor;
     Novo->Esquerda = NULL;
     Novo->Direita = NULL;
@@ -22,15 +26,22 @@ int CalcularAltura(No *Raiz) {
     return (AltEsq > AltDir ? AltEsq : AltDir) + 1;
 }
 
-No *Inserir(No *Raiz, int Valor, int *QtdNos) {
+No *Inserir(No *Raiz, int Valor, int *QtdNos, int *Erro) {
     if (Raiz == NULL) {
+        No *Novo = CriarNo(Valor);
+        
+        if (Novo == NULL) {
+            *Erro = 1;
+            return NULL;
+        }
+        
         (*QtdNos)++;
-        return CriarNo(Valor);
+        return Novo;
     }
     if (Valor < Raiz->Valor) {
-        Raiz->Esquerda = Inserir(Raiz->Esquerda, Valor, QtdNos);
+        Raiz->Esquerda = Inserir(Raiz->Esquerda, Valor, QtdNos, Erro);
     } else if (Valor > Raiz->Valor) {
-        Raiz->Direita = Inserir(Raiz->Direita, Valor, QtdNos);
+        Raiz->Direita = Inserir(Raiz->Direita, Valor, QtdNos, Erro);
     }
     return Raiz;
 }
@@ -76,7 +87,7 @@ void PosOrdem(No *Raiz) {
 
 int ObterMenor(No *Raiz) {
     while (Raiz->Esquerda != NULL) {
-        Raiz = Raiz->Esquerda;
+        Keep: Raiz = Raiz->Esquerda;
     }
     return Raiz->Valor;
 }
@@ -93,8 +104,16 @@ int main()
     No *Raiz = NULL;
     int Valor;
     int QtdNos = 0;
+    int Erro = 0;
+    
     while (scanf("%d", &Valor) == 1 && Valor != -1) {
-        Raiz = Inserir(Raiz, Valor, &QtdNos);
+        Raiz = Inserir(Raiz, Valor, &QtdNos, &Erro);
+        
+        if (Erro) {
+            printf("Erro de Alocação!\n");
+            Liberar(Raiz);
+            return 1;
+        }
     }
     
     if (Raiz == NULL) {
@@ -113,6 +132,7 @@ int main()
     printf("ALTURA: %d\n", CalcularAltura(Raiz));
     printf("MENOR: %d\n", ObterMenor(Raiz));
     printf("MAIOR: %d\n", ObterMaior(Raiz));
+    
     Liberar(Raiz);
     
     return 0;
